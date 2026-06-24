@@ -139,7 +139,7 @@ export default function FolderViewPage() {
   return (
     <div>
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-[#998f88] mb-6">
+      <nav className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-[#998f88] mb-4 sm:mb-6 flex-wrap">
         <Link href="/dashboard" className="hover:text-[#D9CBC2] transition-colors">DocMind</Link>
         <span>/</span>
         <span className="text-[#D9CBC2]">{semesterName || "..."}</span>
@@ -150,9 +150,9 @@ export default function FolderViewPage() {
       </nav>
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-semibold text-white">{category}</h1>
-        <label className="px-5 py-2.5 bg-[#E0C58F] text-[#173450] rounded font-medium hover:bg-[#dec38d] transition-colors cursor-pointer disabled:opacity-50">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-white">{category}</h1>
+        <label className="px-5 py-2.5 bg-[#E0C58F] text-[#173450] rounded font-medium hover:bg-[#dec38d] transition-colors cursor-pointer disabled:opacity-50 text-center text-sm sm:text-base">
           {uploading ? "Uploading..." : "Upload File"}
           <input type="file" className="hidden" onChange={handleUpload} disabled={uploading} accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.png,.jpg,.jpeg" />
         </label>
@@ -180,20 +180,24 @@ export default function FolderViewPage() {
           </div>
         ) : (
           <div>
-            {/* Table Header */}
-            <div className="grid grid-cols-[auto_1fr_120px_100px] gap-4 px-6 py-3 border-b border-white/10 text-xs font-semibold tracking-wider text-[#998f88] uppercase">
+            {/* Table Header — hidden on mobile */}
+            <div className="hidden sm:grid grid-cols-[auto_1fr_120px_100px] gap-4 px-6 py-3 border-b border-white/10 text-xs font-semibold tracking-wider text-[#998f88] uppercase">
               <div className="w-8"></div>
               <div>Filename</div>
               <div>Date</div>
               <div>Size</div>
             </div>
-            {/* File Rows */}
+            {/* File Rows — card layout on mobile, table on desktop */}
             {files.map(file => (
-              <div key={file.id} className="grid grid-cols-[auto_1fr_120px_100px] gap-4 px-6 py-4 border-b border-white/5 hover:bg-white/5 transition-colors items-center">
-                <div className="text-xl w-8">{getFileIcon(file.mimeType)}</div>
-                <div className="text-[#D9CBC2] truncate">{file.name}</div>
-                <div className="text-sm text-[#998f88]">{new Date(file.createdTime).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</div>
-                <div className="text-sm text-[#998f88]">{formatFileSize(file.size)}</div>
+              <div key={file.id} className="flex flex-col sm:grid sm:grid-cols-[auto_1fr_120px_100px] gap-1 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 border-b border-white/5 hover:bg-white/5 transition-colors">
+                <div className="flex items-center gap-3 sm:contents">
+                  <div className="text-xl w-8 shrink-0">{getFileIcon(file.mimeType)}</div>
+                  <div className="text-[#D9CBC2] truncate text-sm sm:text-base">{file.name}</div>
+                </div>
+                <div className="flex gap-4 pl-11 sm:pl-0 sm:contents text-xs sm:text-sm text-[#998f88]">
+                  <div>{new Date(file.createdTime).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</div>
+                  <div>{formatFileSize(file.size)}</div>
+                </div>
               </div>
             ))}
           </div>

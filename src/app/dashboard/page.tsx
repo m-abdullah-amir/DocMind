@@ -54,10 +54,10 @@ export default function DashboardPage() {
 
   if (!activeSemester) {
     return (
-      <div className="flex flex-col items-center justify-center h-full">
-        <div className="glass-panel p-10 text-center max-w-md">
-          <h2 className="text-2xl font-semibold text-white mb-4">Welcome to DocMind</h2>
-          <p className="text-[#D9CBC2] mb-2">Create your first semester using the <span className="text-[#E0C58F]">+</span> button in the sidebar to get started.</p>
+      <div className="flex flex-col items-center justify-center h-full px-4">
+        <div className="glass-panel p-6 sm:p-10 text-center max-w-md w-full">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4">Welcome to DocMind</h2>
+          <p className="text-sm sm:text-base text-[#D9CBC2] mb-2">Create your first semester using the <span className="text-[#E0C58F]">+</span> button in the sidebar to get started.</p>
         </div>
       </div>
     );
@@ -65,7 +65,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-2 text-white">{activeSemester.name}</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-white">{activeSemester.name}</h1>
       <p className="text-[#998f88] mb-8 text-sm">
         {new Date(activeSemester.startDate).toLocaleDateString()} — {new Date(activeSemester.endDate).toLocaleDateString()}
       </p>

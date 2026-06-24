@@ -26,3 +26,16 @@ body {
 .glass-panel {
   @apply bg-white/5 backdrop-blur-xl border-t border-l border-white/20 shadow-2xl shadow-blue-900/50 rounded-lg;
 }
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.25s ease-out;
+}
