@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-sapphire-900: #051424;
+  --color-sapphire-800: #122131;
+  --color-sapphire-700: #173450;
+  
+  --color-silver-300: #D9CBC2;
+  --color-silver-400: #d2c4bb;
+  
+  --color-gold-400: #E0C58F;
+  --color-gold-500: #dec38d;
+
+  --color-background: var(--color-sapphire-900);
+  --color-foreground: var(--color-silver-300);
+
+  --font-sans: "Inter", var(--font-geist-sans), sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-xl border-t border-l border-white/20 shadow-2xl shadow-blue-900/50 rounded-lg;
+}
