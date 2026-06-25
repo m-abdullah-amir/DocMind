@@ -9,11 +9,14 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  themeColor: "#173450",
+};
+
 export const metadata: Metadata = {
   title: "DocMind",
   description: "Organize your academic life with AI.",
   manifest: "/manifest.json",
-  themeColor: "#173450",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
